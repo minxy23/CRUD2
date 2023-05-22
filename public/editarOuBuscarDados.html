@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar ou Buscar Dados</title>
+    <link rel="stylesheet" href="editarOuBuscarDados.css">
+</head>
+
+<body>
+    <h3>Editar, buscar ou deletar dados</h3>
+    <form>
+        <h3>Buscar ou deletar os dados</h3>
+        <label>id:</label>
+        <input type="text" id="id" required><br>
+        <input type="button" onclick="buscarDados()" value="Buscar">
+        <input type="button" onclick="deletarDados()" value="Deletar">
+    </form>
+
+    <h3>Editar os dados</h3>
+    <form action="#" name="registration">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Primeiro Nome</label>
+            <input type="text" name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp"
+                placeholder="Digite o seu primeiro nome...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Sobrenome</label>
+            <input type="text" name="lastname" class="form-control" id="lastname" aria-describedby="emailHelp"
+                placeholder="Digite o seu último nome...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                placeholder="Digite o seu email...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Senha</label>
+            <input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp"
+                placeholder="Digite sua senha...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Telefone</label>
+            <input type="tel" name="telefone" class="form-control" id="telefone" aria-describedby="emailHelp"
+                placeholder="Digite o telefone...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Cursos</label>
+            <input list="cursos" id="opcoesCursos" class="form-control" aria-describedby="emailHelp"
+                placeholder="Digite o curso desejado..." />
+            <datalist id="cursos">
+                <option value="Técnico de Desenvolvimento de Sistemas">
+                <option value="Inglês">
+                <option value="Robótica">
+                <option value="Artes Digitais">
+                <option value="Dança de Rua">
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Período do Curso</label>
+            <input list="periodo" id="opcoesPeriodo" class="form-control" aria-describedby="emailHelp"
+                placeholder="Digite o período desejado..." />
+            <datalist id="periodo">
+                <option value="Manhã">
+                <option value="Tarde">
+                <option value="Noite">
+                <option value="Integral">
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nível de conhecimento prévio</label>
+            <input list="nivel" id="opcoesNivel" class="form-control" aria-describedby="emailHelp"
+                placeholder="Digite o seu nível de conhecimento..." />
+            <datalist id="nivel">
+                <option value="Básico">
+                <option value="Intermediário">
+                <option value="Avançado">
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Informações Adicionais</label>
+            <input id="informacoes" class="form-control" aria-describedby="emailHelp"
+                placeholder="Digite informações adicionais (Não obrigatório)..." />
+        </div>
+
+        <input type="button" onclick="atualizarDados()" value="atualizar">
+        <br><br>
+
+        <a href="lobby.html">Voltar para pagina Principal</a>
+
+        <script>
+            //GET
+            function buscarDados() {
+                const idProcura = document.getElementById('id').value;
+                fetch(`pessoas/${idProcura}`, {
+                    method: 'GET'
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data) {
+                            document.getElementById('firstname').value = data.nome;
+                            document.getElementById('lastname').value = data.sobrenome;
+                            document.getElementById('email').value = data.email;
+                            document.getElementById('password').value = data.senha;
+                            document.getElementById('telefone').value = data.telefone;
+                            document.getElementById('opcoesCursos').value = data.cursos;
+                            document.getElementById('opcoesPeriodo').value = data.periodo;
+                            document.getElementById('opcoesNivel').value = data.nivel;
+                            document.getElementById('informacoes').value = data.informacoes;
+                        } else {
+                            alert('Cadastro não encontrado');
+                        }
+                    })
+            }
+
+            //PUT
+            function atualizarDados() {
+                const id = document.getElementById('id').value;
+                const nome = document.getElementById('firstname').value;
+                const sobrenome = document.getElementById('lastname').value;
+                const email = document.getElementById('email').value;
+                const senha = document.getElementById('password').value;
+                const telefone = document.getElementById('telefone').value;
+                const cursos = document.getElementById('opcoesCursos').value;
+                const periodo = document.getElementById('opcoesPeriodo').value;
+                const nivel = document.getElementById('opcoesNivel').value;
+                const informacoes = document.getElementById('informacoes').value;
+
+                fetch(`pessoas/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: nome,
+                        sobrenome: sobrenome,
+                        email: email,
+                        senha: senha,
+                        telefone: telefone,
+                        cursos: cursos,
+                        periodo: periodo,
+                        nivel: nivel,
+                        informacoes: informacoes
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error(error));
+            }
+
+            //DELETE
+        
+
+            function deletarDados() {
+                const id = document.getElementById('id').value;
+
+                fetch(`pessoas/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error(error));
+            }
+        </script>
+</body>
+
+</html>

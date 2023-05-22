@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="pgLogin.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div id="first">
+                    <div class="myform form ">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                                <h1>Login</h1>
+                            </div>
+                        </div>
+                        <form onsubmit="event.preventDefault(); fazerLogin()" action="" method="post" name="login">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                    aria-describedby="emailHelp" placeholder="Digite o seu email...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Senha</label>
+                                <input type="password" name="password" id="password" class="form-control"
+                                    aria-describedby="emailHelp" placeholder="Digite sua senha...">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <p class="text-center">Eu li e concordo com os <a href="#">Termos de Uso</a></p>
+                            </div>
+
+                            <div class="col-md-12 text-center ">
+                                <input type="button" onclick="fazerLogin()" class=" btn btn-block mybtn btn-primary tx-tfm" value="Login">
+                            </div>
+
+                            <br>
+                            <div class="form-group">
+                                <p class="text-center">Ainda não possui conta? <a href="pgCadastro.html" id="signup">Crie aqui</a></p>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="pgLogin.js"></script>
+
+    <script>
+        function fazerLogin() {
+            const email = document.getElementById("email").value
+            const senha = document.getElementById("password").value
+
+            fetch(`pessoas/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    //Busca as pessoas cujo nome e idade se concidem com os valores digitados
+                    //Esse (p) seria o parametro do find (Procurar) Função CallBack
+                    const fornecedor = data.find(p => p.email === email && p.senha == senha);
+
+                    if (fornecedor) {
+                        window.location.href = "lobby.html"
+                    } else {
+                        alert('Nome ou  senha Incorretos')
+                    }
+                })
+        }
+    </script>
+</body>
+
+</html>

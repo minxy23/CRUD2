@@ -1,0 +1,89 @@
+/* Define o estilo do corpo do documento
+body {
+    background-color: #F5F5F5;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Define o estilo do cabeçalho da página */
+  /* h1 {
+    color: #333;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 50px auto 30px;
+    text-align: center;
+  } */
+  
+  /* Define o estilo dos links da página */
+  /* a {
+    color: #0077CC;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  } */
+  
+  /* Define o estilo dos botões da página */
+  /* button {
+    background-color: #0077CC;
+    border: none;
+    border-radius: 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 30px auto 0;
+    padding: 15px 30px;
+    display: block;
+  } */ 
+
+  body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+  
+  a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #333333;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  a:hover {
+    color: #ffffff;
+    background-color: #333333;
+    border-color: #333333;
+  }
+  
+  a + a {
+    margin-left: 10px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    h1 {
+      font-size: 28px;
+    }
+  
+    a {
+      display: block;
+      margin-bottom: 20px;
+    }
+  }

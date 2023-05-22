@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADASTRO</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="pgLogin.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div id="second">
+                    <div class="myform form ">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                                <h1>Crie sua Conta</h1>
+                            </div>
+                        </div>
+
+                        <form action="#" name="registration">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Primeiro Nome</label>
+                                <input type="text" name="firstname" class="form-control" id="firstname"
+                                    aria-describedby="emailHelp" placeholder="Digite o seu primeiro nome...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Sobrenome</label>
+                                <input type="text" name="lastname" class="form-control" id="lastname"
+                                    aria-describedby="emailHelp" placeholder="Digite o seu último nome...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                    aria-describedby="emailHelp" placeholder="Digite o seu email...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Senha</label>
+                                <input type="password" name="password" id="password" class="form-control"
+                                    aria-describedby="emailHelp" placeholder="Digite sua senha...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Telefone</label>
+                                <input type="tel" name="telefone" class="form-control" id="telefone"
+                                    aria-describedby="emailHelp" placeholder="Digite o telefone...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Cursos</label>
+                                <input list="cursos" id="opcoesCursos" class="form-control" aria-describedby="emailHelp"
+                                    placeholder="Digite o curso desejado..." />
+                                <datalist id="cursos">
+                                    <option value="Técnico de Desenvolvimento de Sistemas">
+                                    <option value="Inglês">
+                                    <option value="Robótica">
+                                    <option value="Artes Digitais">
+                                    <option value="Dança de Rua">
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Período do Curso</label>
+                                <input list="periodo" id="opcoesPeriodo" class="form-control"
+                                    aria-describedby="emailHelp" placeholder="Digite o período desejado..." />
+                                <datalist id="periodo">
+                                    <option value="Manhã">
+                                    <option value="Tarde">
+                                    <option value="Noite">
+                                    <option value="Integral">
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nível de conhecimento prévio</label>
+                                <input list="nivel" id="opcoesNivel" class="form-control" aria-describedby="emailHelp"
+                                    placeholder="Digite o seu nível de conhecimento..." />
+                                <datalist id="nivel">
+                                    <option value="Básico">
+                                    <option value="Intermediário">
+                                    <option value="Avançado">
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Informações Adicionais</label>
+                                <input id="informacoes" class="form-control" aria-describedby="emailHelp"
+                                    placeholder="Digite informações adicionais (Não obrigatório)..." />
+                            </div>
+
+                            <div class="col-md-12 text-center mb-3">
+                                <input type="button" onclick="enviarDados()"
+                                    class=" btn btn-block mybtn btn-primary tx-tfm" value="Cadastre-se de
+                                graça!">
+                            </div>
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <p class="text-center"><a href="index.html" id="signin">Já possui uma conta?</a>
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="pgLogin.js"></script>
+
+    <script>
+        function enviarDados() {
+            // Obtenha os valores dos campos de entrada
+            var input1 = document.getElementById("firstname").value;
+            var input2 = document.getElementById("lastname").value;
+            var input3 = document.getElementById("email").value;
+            var input4 = document.getElementById("password").value;
+            var input5 = document.getElementById("telefone").value;
+            var input6 = document.getElementById("opcoesCursos").value;
+            var input7 = document.getElementById("opcoesPeriodo").value;
+            var input8 = document.getElementById("opcoesNivel").value;
+
+            var validar = "";
+
+            // Verifique se os campos de entrada estão vazios
+            if (input1 === "" || input2 === "" || input3 === "" || input4 === "" || input5 === "" || input6 === "" || input7 === "" || input8 === "") {
+                // Se algum campo estiver vazio, impeça que o formulário seja enviado
+                alert("Por favor, preencha todos os campos.");
+                return false;
+                validar = "";
+            }
+            // Se todos os campos estiverem preenchidos, permita que o formulário seja enviado
+            else {
+                const nome = document.getElementById('firstname').value;
+
+                const sobrenome = document.getElementById('lastname').value;
+
+                const email = document.getElementById('email').value;
+
+                const senha = document.getElementById('password').value;
+
+                const telefone = document.getElementById('telefone').value;
+
+                const cursos = document.getElementById('opcoesCursos').value;
+
+                const periodo = document.getElementById('opcoesPeriodo').value;
+
+                const nivel = document.getElementById('opcoesNivel').value;
+
+                const informacoes = document.getElementById('informacoes').value;
+
+                fetch(`pessoas/${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: nome, sobrenome: sobrenome, email: email, senha: senha, telefone: telefone,
+                        cursos: cursos, periodo: periodo, nivel: nivel, informacoes: informacoes
+                    })
+                })
+                    .then(response => response.json)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
